@@ -1,35 +1,36 @@
 import React, { useContext } from "react";
 import { data } from "../context/Contextdata";
+import userpagestyle from "./UserPage.module.css";
+import UserCard from "../card/UserCard";
 
 function UsersPage() {
   const { userData, page, totalPage, gotoNextPage, gotoPrevPage } =
     useContext(data);
   return (
     <>
-      <div>
-        {userData.length > 0 && (
-          <div>
+      <div className={userpagestyle.gridwrapper}>
+        {userData.length ? (
+          <div className={userpagestyle.grid}>
             {userData.map((data) => {
               const { avatar, email, first_name, id, last_name } = data;
               return (
-                <div key={id}>
-                  <div>
-                    <img src={avatar} alt={first_name} />
-                  </div>
-                  <div>{first_name}</div>
-                  <div>{last_name}</div>
-                  <div>{email}</div>
-                </div>
+                <UserCard {...{ avatar, email, first_name, id, last_name }} />
               );
             })}
           </div>
+        ) : (
+          <div>Loading...</div>
         )}
       </div>
-      <div>
+      <div className={userpagestyle.buttonouter}>
         {page === totalPage ? (
-          <button onClick={gotoPrevPage}>Prev</button>
+          <button onClick={gotoPrevPage} className={userpagestyle.buttoninner}>
+            Prev
+          </button>
         ) : (
-          <button onClick={gotoNextPage}>Next</button>
+          <button onClick={gotoNextPage} className={userpagestyle.buttoninner}>
+            Next
+          </button>
         )}
       </div>
     </>

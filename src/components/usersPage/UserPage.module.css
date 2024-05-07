@@ -1,0 +1,25 @@
+.gridwrapper {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.buttonouter {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.buttoninner {
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.buttoninner:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

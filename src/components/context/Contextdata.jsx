@@ -10,9 +10,7 @@ function Contextdata({ children }) {
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        const response = await fetch(
-          `https://reqres.in/api/users?page=${page}`
-        );
+        const response = await fetch(`https://reqres.in/api/users?page=${page}`);
         const data = await response.json();
         setuserData(data.data);
         setTotalPage(data.total_pages);
